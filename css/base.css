@@ -1,0 +1,17 @@
+body {
+    background: black;
+}
+.app {
+    min-width: 500px;
+    max-width: 800px;
+    padding: 40px;
+    margin: 0 auto;
+}
+.image-style {
+    width: 100%;
+    margin: 100px 0;
+    border: 20px;
+}
+.center-button {
+    text-align: center;
+}
