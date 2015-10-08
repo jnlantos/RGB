@@ -21,27 +21,29 @@
    
   </head>
   <body class="bg">
-    <div class="app">
-        <div>
-            <p class="score">Score: 0</p>
-            <p class="message"></p>
-        </div>
-        <form>
-            Red: <input id="red_input" type="text">
-            Green: <input id="green_input" type="text">
-            Blue: <input id="blue_input" type="text">
-        </form>
-    </div>
     <div>
-        <p class="center-button">
-            <button id="submit-button" class="btn btn-default btn-lg">
-            Submit!
-            </button>
-            <button id="next-color-button" class="btn btn-default btn-lg">
-            Next Color!
-            </button>
-        </p>
+        <p class="score">Score: 0</p>  
     </div>
+    <div class="page">
+        <p class="message"></p>
+        <div class="app">
+            <form class="input">
+                Red: <input id="red_input" type="text">
+                Green: <input id="green_input" type="text">
+                Blue: <input id="blue_input" type="text">
+            </form>
+
+            <p class="center-button">
+                <button id="submit-button" class="btn btn-default btn-lg">
+                Submit!
+                </button>
+                <!-- <button id="next-color-button" class="btn btn-default btn-lg">
+                Next Color! -->
+                </button>
+            </p>
+        </div>
+    </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
