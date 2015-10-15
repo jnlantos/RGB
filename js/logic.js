@@ -33,13 +33,17 @@ function compare_arrays(array1, array2) {
     return diff
     }
 
+// score is based on a continuum.
+// The smaller the diff, the better the guess,
+// so the smaller the diff, the higher the score.
+// The total score you can get each time is 255 * 3,
+// in which case the diff was 0 for each colour.
+// scaled out of 100.
 function calculate_score() {
     var answer = get_answer();
     var guess = get_guess();
     var diff = compare_arrays(answer, guess)
-    if (diff < 100) {
-        return 1
-    }
+    return Math.floor(((((255 * 3) - diff) / (255 * 3)) * 100))
 }
 
 // I think houssam mentioned that we should use classes instead of ids whenever possible -style -get him to code review. :TODO
