@@ -14,9 +14,9 @@ function get_answer() {
 }
 
 function get_guess() {
-    var red = document.getElementById('red_input').value;
-    var green = document.getElementById('green_input').value;
-    var blue = document.getElementById('blue_input').value;
+    var red = $('#red_input').val();
+    var green = $('#green_input').val();
+    var blue = $('#blue_input').val();
     console.log([parseInt(red.trim()), parseInt(green.trim()), parseInt(blue.trim())])
     return [parseInt(red.trim()), parseInt(green.trim()), parseInt(blue.trim())]
 }
