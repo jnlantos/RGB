@@ -1,8 +1,7 @@
 var SCORE = 0;
-var FLAG = 0;
 
 function get_answer() {
-    var str = $('body').css('background');
+    var str = $('.bg').css('background-color');
     str = str.split('(');
     str = str[1].split(',')
     var red = str[0];
@@ -90,6 +89,7 @@ $('#submit-button').on('click', function() {
         $('.bg').css('background-color', gen_background())
         $('.score').text("Score: " + SCORE.toString())
         console.log(win)
+        console.log(SCORE)
     }
     else {
         $('.message').text("Form not valid!")
