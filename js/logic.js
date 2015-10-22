@@ -63,7 +63,7 @@ function gen_background(){
 }
 
 //when do we need document.ready() wrapped around this? :TODO
-$('.bg').css('background-color', gen_background())
+$('.circle').css('background-color', gen_background())
 
 $('#submit-button').on('click', function() {
     var win = calculate_score();
