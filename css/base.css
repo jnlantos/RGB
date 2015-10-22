@@ -57,7 +57,9 @@ body {
 .bg {
     height: 250px;
     width: 250px;
-    border-radius: 25px;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 0 auto;
     border: 2px solid white;
 }
 
@@ -66,7 +68,7 @@ body {
     width: 250px;
     padding: 10px;
     margin: 0 auto;
-    border-radius: 25px;
+    border-radius: 50%;
     border: 2px solid white;
 }
 
@@ -79,4 +81,16 @@ input, textarea {
   background: rgba(0,0,0,.1);
   border-radius: 5px;
   outline: none;
+}
+
+#submit-button{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font: 16px arial, sans-serif;
+
+}
+#submit-button:focus {
+  outline-color: transparent;
+  outline-style: none;
 }

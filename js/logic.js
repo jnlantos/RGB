@@ -67,25 +67,11 @@ $('.bg').css('background-color', gen_background())
 
 $('#submit-button').on('click', function() {
     var win = calculate_score();
-    if (win && FLAG === 0) {
-        $('.message').text("You got it!")
-        SCORE += 1
-        FLAG = 1;
-    }
+    $('.message').text("You got " + win.toString() + " points!")
+    SCORE += win
+    $('.bg').css('background-color', gen_background())
 
-    else if (win && FLAG === 1){
-        $('.message').text("Go to next color!")
-    }
-    else {
-         $('.message').text("Nope! Try another color!")
-    }
     $('.score').text("Score: " + SCORE.toString())
     console.log(win)
 
-})
-
-$('#next-color-button').on('click', function(){
-    $('.bg').css('background-color', gen_background())
-    $('.message').text("")
-    FLAG = 0;
 })
