@@ -20,26 +20,34 @@
     <![endif]-->
    
   </head>
-  <body class="bg">
+  <body>
     <div>
-        <p class="score">Score: 0</p>  
+        <p class="score">Score: 0</p>
+        <p class="timer">00:00</p>  
     </div>
+    <p class="message"></p>
     <div class="page">
-        <p class="message"></p>
-        <div class="app">
-            <form class="input">
-                Red: <input id="red_input" type="text">
-                Green: <input id="green_input" type="text">
-                Blue: <input id="blue_input" type="text">
-            </form>
 
+        <div class="bg-border">
+            <div class="bg"> </div>
+        </div>
+        
+        <div class="app">
+ 
+            <form class="input">
+                <p class="input-txt">
+                Red: <input id="red_input" type="text">
+                &nbspGreen: <input id="green_input" type="text">
+                &nbspBlue: <input id="blue_input" type="text"></p>
+            </form>
+        
             <p class="center-button">
                 <button id="submit-button" class="btn btn-default btn-lg">
                 Submit!
                 </button>
-                <!-- <button id="next-color-button" class="btn btn-default btn-lg">
-                Next Color! -->
-                </button>
+          <!--       <button id="next-color-button" class="btn btn-default btn-lg">
+                Next Color!
+                </button> -->
             </p>
         </div>
     </div>
