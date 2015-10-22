@@ -17,7 +17,7 @@ function get_guess() {
     var red = $('#red_input').val();
     var green = $('#green_input').val();
     var blue = $('#blue_input').val();
-    console.log([parseInt(red.trim()), parseInt(green.trim()), parseInt(blue.trim())])
+    console.log("Get guess output: " + [parseInt(red.trim()), parseInt(green.trim()), parseInt(blue.trim())])
     return [parseInt(red.trim()), parseInt(green.trim()), parseInt(blue.trim())]
 }
 
@@ -62,16 +62,38 @@ function gen_background(){
     return 'rgb(' + red.toString() + ',' + green.toString() + ',' + blue.toString() + ')'
 }
 
+function validate_form(){
+    var inputs = get_guess()
+    console.log("inputs: " + inputs)
+    for (i = 0; i < inputs.length; i++) {
+        if (inputs[i] > 256 || inputs[i] < 0) {
+            return false
+        }
+        else if (isNaN(inputs[i])) {
+            return false
+        }
+    }
+    return true
+}
+
 //when do we need document.ready() wrapped around this? :TODO
 $('.circle').css('background-color', gen_background())
 
 $('#submit-button').on('click', function() {
-    var win = calculate_score();
-    $('.message').text("You got " + win.toString() + " points!")
-    SCORE += win
+    var valid = validate_form()
+    console.log(valid)
+    if (valid) {
+        var win = calculate_score();
+        $('.message').text("You got " + win.toString() + " points!")
+        SCORE += win
 
-    $('.bg').css('background-color', gen_background())
-    $('.score').text("Score: " + SCORE.toString())
-    console.log(win)
+        $('.bg').css('background-color', gen_background())
+        $('.score').text("Score: " + SCORE.toString())
+        console.log(win)
+    }
+    else {
+        $('.message').text("Form not valid!")
+    }
+
 
 })
