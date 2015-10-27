@@ -1,4 +1,5 @@
 var SCORE = 0;
+var TIME = moment.duration(3, 'minutes');
 
 function get_answer() {
     var str = $('.bg').css('background-color');
@@ -74,6 +75,20 @@ function validate_form(){
     }
     return true
 }
+
+
+setInterval(function (){
+    $('.time').text(moment(TIME).format("m:ss"));
+
+    var subtract = moment.duration(1, 'seconds');
+    console.log(moment(TIME).get('second'))
+    TIME.subtract(subtract);
+}, 1000)
+
+
+
+
+
 
 //when do we need document.ready() wrapped around this? :TODO
 $('.circle').css('background-color', gen_background())
