@@ -23,9 +23,10 @@
   <body class="white">
     <div class="top">
         <p class="score">Score: 0</p>
-        <p class="time countdown"></p>
+        <p class="countdown">3:00</p>
     </div>
     <div class="page">
+        <p class="gameover-message"></p>
         <p class="message"></p>
         <div class="circle"></div>
         <div class="app">
@@ -37,8 +38,12 @@
 
             <p class="center-button">
                 <button id="submit-button" class="btn btn-button-reverse btn-lg">
-                Submit
+                    Submit
                 </button>
+                <button id="replay-button" class="btn btn-default btn-lg">
+                    Replay! <span class="glyphicon glyphicon-repeat"></span>
+                </button>
+        </p>
             </p>
         </div>
     </div>

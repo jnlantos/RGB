@@ -1,5 +1,7 @@
 var SCORE = 0;
 
+$('#replay-button').hide()
+
 function get_answer() {
     var str = $('.circle').css('background-color');
     str = str.split('(');
@@ -54,7 +56,7 @@ function gen_random_number() {
     return  Math.floor(Math.random() * (255))
 }
 
-function gen_background(){
+function gen_background() {
     var red = gen_random_number()
     var green = gen_random_number()
     var blue = gen_random_number()
@@ -77,16 +79,35 @@ function validate_form(){
 
 
 // Question: how come when we change to seconds shit breaks?
-var time = 180;
+var time = 3;
 var duration = moment.duration(time * 1000, 'milliseconds');
 var interval = 1000;
+var timeout = new Event('zero');
+
+//Why do event listeners need anonomous functions?
+document.addEventListener('zero', function(){
+    $('.score').hide()
+    $('.countdown').hide()
+    $('.circle').hide()
+    $('.input').hide()
+    $('#submit-button').hide()
+    $('.message').hide()
+    $('.gameover-message').html('GAME OVER!' + '<br><br>' + 'Score: ' + SCORE.toString())
+    $('#replay-button').show()
+
+});
 
 setInterval(function(){
-  duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
-  //show how many hours, minutes and seconds are left
-  $('.countdown').text(moment(duration.asMilliseconds()).format('m:ss'));
-}, interval);
+    if ($('.countdown').text() === '0:00'){
+        document.dispatchEvent(timeout)
+    }
+    else {
+        duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
+        //show how many hours, minutes and seconds are left
+        $('.countdown').text(moment(duration.asMilliseconds()).format('m:ss'));
+    }
 
+}, interval);
 
 //when do we need document.ready() wrapped around this? :TODO
 $('.circle').css('background-color', gen_background())
@@ -107,6 +128,8 @@ $('#submit-button').on('click', function() {
     else {
         $('.message').text("Form not valid!")
     }
+})
 
-
+$('#replay-button').on('click', function() {
+   window.location.href = 'play.html'
 })
