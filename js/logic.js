@@ -1,8 +1,7 @@
 var SCORE = 0;
-var TIME = moment.duration(3, 'minutes');
 
 function get_answer() {
-    var str = $('.bg').css('background-color');
+    var str = $('.circle').css('background-color');
     str = str.split('(');
     str = str[1].split(',')
     var red = str[0];
@@ -77,17 +76,16 @@ function validate_form(){
 }
 
 
-setInterval(function (){
-    $('.time').text(moment(TIME).format("m:ss"));
+// Question: how come when we change to seconds shit breaks?
+var time = 180;
+var duration = moment.duration(time * 1000, 'milliseconds');
+var interval = 1000;
 
-    var subtract = moment.duration(1, 'seconds');
-    console.log(moment(TIME).get('second'))
-    TIME.subtract(subtract);
-}, 1000)
-
-
-
-
+setInterval(function(){
+  duration = moment.duration(duration.asMilliseconds() - interval, 'milliseconds');
+  //show how many hours, minutes and seconds are left
+  $('.countdown').text(moment(duration.asMilliseconds()).format('m:ss'));
+}, interval);
 
 
 //when do we need document.ready() wrapped around this? :TODO
@@ -101,7 +99,7 @@ $('#submit-button').on('click', function() {
         $('.message').text("You got " + win.toString() + " points!")
         SCORE += win
 
-        $('.bg').css('background-color', gen_background())
+        $('.circle').css('background-color', gen_background())
         $('.score').text("Score: " + SCORE.toString())
         console.log(win)
         console.log(SCORE)
