@@ -1,6 +1,7 @@
 var SCORE = 0;
 
 $('#replay-button').hide()
+$('#high-scores').hide()
 
 function get_answer() {
     var str = $('.circle').css('background-color');
@@ -78,6 +79,30 @@ function validate_form(){
 }
 
 
+function getHighScores(){
+    $.ajax({
+        url: "http://localhost:3000/scores",
+        type: "GET",
+        dataType: "json",
+        
+        success: function( json ){
+            $("#high-scores").text(json)
+        },
+
+        error: function(xhr, status, errorThrown){
+            alert("Sorry, there was a problem!")
+            console.log("Error: " + errorThrown)
+            console.log("Status: " + status)
+            console.dir(xhr)    
+        },
+
+        complete: function (xhr, status){
+            alert("get rid of this later")
+        }
+    })
+}
+
+
 // Question: how come when we change to seconds shit breaks?
 var time = 3;
 var duration = moment.duration(time * 1000, 'milliseconds');
@@ -94,6 +119,8 @@ document.addEventListener('zero', function(){
     $('.message').hide()
     $('.gameover-message').html('GAME OVER!' + '<br><br>' + 'Score: ' + SCORE.toString())
     $('#replay-button').show()
+    getHighScores()
+    $('#high-scores').show()
 
 });
 
