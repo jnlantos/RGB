@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var _ = require('lodash');
+
 router.get('/', function(req, res){
 	console.log('GET scores');
 	var db = req.db;
@@ -10,10 +12,14 @@ router.get('/', function(req, res){
 		'sort': [['score', 'desc']],
 		'limit': 5,
 	}
-		
-
 	collection.find({}, options, function(err, docs){
-		res.json(docs);
+		var result = _.map(docs, function(doc) {
+			return {
+				username: doc.username,
+				score: doc.score
+			}
+		})
+		res.json(result);
 	});
 });
 

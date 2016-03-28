@@ -13,6 +13,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var scores = require('./routes/scores');
 
+var path = require('path');
+
 var app = express();
 
 // view engine setup
@@ -33,7 +35,10 @@ app.use(function(req, res, next){
   next();
 })
 
-app.use('/', routes);
+//app.use('/', routes);
+console.log('>>>>>>')
+console.log(path.join(__dirname, '../../frontend'))
+app.use('/', express.static(path.join(__dirname, '../../frontend')));
 app.use('/users', users);
 app.use('/scores', scores);
 

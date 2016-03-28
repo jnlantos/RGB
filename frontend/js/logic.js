@@ -125,7 +125,7 @@ function postHighScore(){
 
 
 // Question: how come when we change to seconds shit breaks?
-var time = 3;
+var time = 100;
 var duration = moment.duration(time * 1000, 'milliseconds');
 var interval = 1000;
 var timeout = new Event('zero');
@@ -203,6 +203,6 @@ $('#submit-nickname').on('click', function() {
     $('.input-nickname').hide()
     getHighScores()
    
-    document.removeEventListener(timeout)
+    document.removeEventListener('zero', timeout)
     document.dispatchEvent(showhighscores)
 })
