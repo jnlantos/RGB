@@ -8,6 +8,8 @@ Start Mongo:
 
 2) Navigate to /bin of wherever you installed Mongo and type "mongod --dbpath ~/Desktop/10%/RGB/highscores/data/".
    This will start mongo and tell it where to keep all the files for the database.
+   
+3) Run 'mongo' in same directory.
 
 Start node:
 
